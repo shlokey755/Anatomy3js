@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Anatomy of a Car</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    />
+  </head>
+  <body>
+    <div id="stage" aria-hidden="true"><canvas id="gl"></canvas></div>
+    <div id="progress" aria-hidden="true"><i id="progbar"></i></div>
+
+    <header class="top">
+      <span class="brand">Anatomy of a Car</span>
+      <span class="pct" id="pct" aria-hidden="true">000%</span>
+    </header>
+
+    <aside id="hud" aria-hidden="true">
+      <div class="hud-head"><span id="hud-ch">Intro</span><span class="legend">Slide m · Turn</span></div>
+      <div class="hud-row" data-axis="x"><b>X</b><span class="bar"><i></i></span><span class="v off">0.00</span><span class="v rot">0°</span></div>
+      <div class="hud-row" data-axis="y"><b>Y</b><span class="bar"><i></i></span><span class="v off">0.00</span><span class="v rot">0°</span></div>
+      <div class="hud-row" data-axis="z"><b>Z</b><span class="bar"><i></i></span><span class="v off">0.00</span><span class="v rot">0°</span></div>
+      <div class="hud-cam"><b>Cam</b><span id="hud-cam">+0.0 +0.0 +0.0</span></div>
+    </aside>
+
+    <nav id="nav" aria-label="Chapters"></nav>
+
+    <div id="cards">
+      <div class="slot left">
+        <section class="card hero" data-range="-2,-1,0.085,0.12" data-axis="z" data-side="left">
+          <p class="kicker">A scroll-driven teardown</p>
+          <h1>Anatomy<br />of a car</h1>
+          <p class="lede">
+            A car is a handful of simple systems working together. Scroll to take one apart along every axis, then put
+            it back together.
+          </p>
+          <p class="cue">Scroll <span aria-hidden="true">↓</span></p>
+        </section>
+      </div>
+
+      <div class="slot right">
+        <section class="card" data-range="0.125,0.165,0.29,0.33" data-axis="y" data-side="right">
+          <p class="meta"><span>01 / Body</span><span class="chip">Axis Y</span></p>
+          <h2>A shell built to fold.</h2>
+          <p>
+            Most modern passenger cars are unibody: floor, pillars and roof form one welded structure instead of a body
+            bolted to a separate frame. The cabin is a rigid safety cell. The front and rear are built to crumple,
+            spending crash energy on bending metal instead of on the people inside.
+          </p>
+          <dl class="facts">
+            <div><dt>Slides</dt><dd>Up the Y axis</dd></div>
+            <div><dt>Parts</dt><dd>Shell, cabin glass, roof, seats, dashboard</dd></div>
+          </dl>
+        </section>
+      </div>
+
+      <div class="slot left">
+        <section class="card" data-range="0.33,0.37,0.47,0.51" data-axis="x" data-side="left">
+          <p class="meta"><span>02 / Wheels</span><span class="chip">Axis Z</span></p>
+          <h2>Four hand-sized patches.</h2>
+          <p>
+            Everything a car does, whether accelerating, braking or turning, passes through four patches of rubber,
+            each about the size of your palm. Springs carry the weight, dampers stop the bouncing, and brake calipers
+            squeeze discs to turn motion into heat.
+          </p>
+          <dl class="facts">
+            <div><dt>Slides</dt><dd>Out along Z, side to side</dd></div>
+            <div><dt>Parts</dt><dd>4 wheels, 4 brake discs, 4 calipers, 4 springs, 4 dampers</dd></div>
+          </dl>
+        </section>
+      </div>
+
+      <div class="slot right">
+        <section class="card" data-range="0.51,0.55,0.65,0.69" data-axis="x" data-side="right">
+          <p class="meta"><span>03 / Powertrain</span><span class="chip">Axis X</span></p>
+          <h2>Fire, turn, deliver.</h2>
+          <p>
+            A petrol engine pushes pistons through four strokes: intake, compression, power, exhaust. The gearbox picks
+            a ratio, the driveshaft carries torque rearward, and the differential lets the two driven wheels turn at
+            different speeds in a corner.
+          </p>
+          <dl class="facts">
+            <div><dt>Slides</dt><dd>Along X, front to back</dd></div>
+            <div><dt>Parts</dt><dd>Radiator, engine, gearbox, driveshaft, differential, exhaust</dd></div>
+            <div><dt>Layout</dt><dd>Front engine, rear-wheel drive</dd></div>
+          </dl>
+        </section>
+      </div>
+
+      <div class="slot left">
+        <section class="card" data-range="0.69,0.73,0.87,0.91" data-axis="y" data-side="left">
+          <p class="meta"><span>04 / Assembly</span><span class="chip">Axes X Y Z</span></p>
+          <h2>Pitch, roll, yaw.</h2>
+          <p>
+            Every vehicle turns about three axes. Pitch is the nose dipping under braking and lifting under
+            acceleration. Roll is the lean in a corner. Yaw is the swing of the nose left or right. Watch the car turn
+            through all three, in that order.
+          </p>
+          <dl class="facts">
+            <div><dt>Turns</dt><dd>Pitch about Z, roll about X, yaw about Y</dd></div>
+            <div><dt>Reads</dt><dd>Watch the Turn column in the readout</dd></div>
+          </dl>
+        </section>
+      </div>
+
+      <div class="slot left">
+        <section class="card finale" data-range="0.91,0.95,2,3" data-axis="z" data-side="left">
+          <p class="meta"><span>Assembled</span><span class="chip">X Y Z</span></p>
+          <h2>Every axis. One machine.</h2>
+          <p>
+            Three slides, three turns, one car. Scroll back up to take it apart again, or read on for what moved and
+            why.
+          </p>
+          <div class="actions">
+            <button type="button" data-goto="top">Back to start ↑</button>
+            <button type="button" data-goto="ref">Reference ↓</button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div id="story"></div>
+
+    <main id="ref">
+      <div class="wrap">
+        <header class="sec" data-reveal="y">
+          <p class="label">Reference</p>
+          <h2 class="big">What moved, and why.</h2>
+          <p class="lede">
+            The teardown used a real vehicle's three axes. Here is how each one maps to the car, and what sits in each
+            system.
+          </p>
+        </header>
+
+        <section class="sec" aria-labelledby="axes-h">
+          <p class="label" id="axes-h">The three axes</p>
+          <div class="axes">
+            <article class="axis" data-reveal="x">
+              <span class="letter">X</span>
+              <h3>Longitudinal</h3>
+              <p>Front to back, along the length of the car.</p>
+              <dl>
+                <dt>Slide</dt><dd>The powertrain, radiator to exhaust.</dd>
+                <dt>Turn</dt><dd>Roll, the body leaning in a corner.</dd>
+              </dl>
+            </article>
+            <article class="axis" data-reveal="y">
+              <span class="letter">Y</span>
+              <h3>Vertical</h3>
+              <p>Up and down, from the road to the roof.</p>
+              <dl>
+                <dt>Slide</dt><dd>Seats, body shell and cabin lift away.</dd>
+                <dt>Turn</dt><dd>Yaw, the nose swinging left or right.</dd>
+              </dl>
+            </article>
+            <article class="axis" data-reveal="z">
+              <span class="letter">Z</span>
+              <h3>Lateral</h3>
+              <p>Side to side, across the width of the car.</p>
+              <dl>
+                <dt>Slide</dt><dd>Wheels, brakes and springs move out.</dd>
+                <dt>Turn</dt><dd>Pitch, the nose dipping and lifting.</dd>
+              </dl>
+            </article>
+          </div>
+        </section>
+
+        <section class="sec" aria-labelledby="sys-h">
+          <p class="label" id="sys-h">Systems at a glance</p>
+          <div class="tbl" data-reveal="y">
+            <table>
+              <thead>
+                <tr><th scope="col">System</th><th scope="col">Job</th><th scope="col">In this model</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Body</th><td>Shapes airflow and protects the occupants.</td><td>Shell, cabin glass, roof, mirrors, seats, dashboard</td></tr>
+                <tr><th scope="row">Chassis</th><td>Carries every load the car meets.</td><td>2 rails, 4 cross members</td></tr>
+                <tr><th scope="row">Suspension</th><td>Keeps the tyres on the road over bumps.</td><td>4 coil springs, 4 dampers</td></tr>
+                <tr><th scope="row">Wheels and brakes</th><td>Grip the road and slow the car.</td><td>4 wheels, 4 discs, 4 calipers</td></tr>
+                <tr><th scope="row">Powertrain</th><td>Makes torque and delivers it to the road.</td><td>Engine, gearbox, driveshaft, differential, radiator, exhaust</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="sec" aria-labelledby="four-h">
+          <p class="label" id="four-h">Four strokes</p>
+          <div class="strokes">
+            <article data-reveal="x" data-dir="-1">
+              <svg viewBox="0 0 80 110" role="img" aria-label="Intake: piston moving down">
+                <path d="M20 6v98M60 6v98" fill="none" stroke="currentColor" stroke-width="2" />
+                <rect x="21" y="50" width="38" height="12" fill="currentColor" />
+                <path d="M40 62v40" stroke="currentColor" stroke-width="3" />
+                <path d="M40 90l-8-12h16z" fill="currentColor" />
+              </svg>
+              <h3>Intake</h3>
+              <p>The piston drops and draws in air and fuel.</p>
+            </article>
+            <article data-reveal="y">
+              <svg viewBox="0 0 80 110" role="img" aria-label="Compression: piston moving up">
+                <path d="M20 6v98M60 6v98" fill="none" stroke="currentColor" stroke-width="2" />
+                <rect x="21" y="26" width="38" height="12" fill="currentColor" />
+                <path d="M40 38v64" stroke="currentColor" stroke-width="3" />
+                <path d="M40 66l-8 12h16z" fill="currentColor" />
+              </svg>
+              <h3>Compression</h3>
+              <p>The piston rises and squeezes the mixture.</p>
+            </article>
+            <article data-reveal="z">
+              <svg viewBox="0 0 80 110" role="img" aria-label="Power: spark, piston driven down">
+                <path d="M20 6v98M60 6v98" fill="none" stroke="currentColor" stroke-width="2" />
+                <rect x="21" y="40" width="38" height="12" fill="currentColor" />
+                <path d="M40 52v50" stroke="currentColor" stroke-width="3" />
+                <path d="M44 8L34 22h7l-5 12 12-16h-7z" fill="currentColor" />
+                <path d="M40 92l-8-12h16z" fill="currentColor" />
+              </svg>
+              <h3>Power</h3>
+              <p>A spark ignites it and the expanding gas drives the piston down.</p>
+            </article>
+            <article data-reveal="x">
+              <svg viewBox="0 0 80 110" role="img" aria-label="Exhaust: piston moving up">
+                <path d="M20 6v98M60 6v98" fill="none" stroke="currentColor" stroke-width="2" />
+                <rect x="21" y="30" width="38" height="12" fill="currentColor" />
+                <path d="M40 42v60" stroke="currentColor" stroke-width="3" />
+                <path d="M40 68l-8 12h16z" fill="currentColor" />
+              </svg>
+              <h3>Exhaust</h3>
+              <p>The piston rises again and pushes the burnt gas out.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="sec" aria-labelledby="gl-h">
+          <p class="label" id="gl-h">Glossary</p>
+          <dl class="glossary">
+            <div data-reveal="x" data-dir="-1"><dt>Unibody</dt><dd>A body and frame built as a single structure.</dd></div>
+            <div data-reveal="x"><dt>Crumple zone</dt><dd>A section designed to deform in a crash and absorb energy.</dd></div>
+            <div data-reveal="x" data-dir="-1"><dt>Contact patch</dt><dd>The part of a tyre touching the road at any moment, about the size of a palm.</dd></div>
+            <div data-reveal="x"><dt>Damper</dt><dd>Also called a shock absorber. It resists spring motion so the car settles instead of bouncing.</dd></div>
+            <div data-reveal="x" data-dir="-1"><dt>Differential</dt><dd>A gear set that lets the two wheels on one axle turn at different speeds.</dd></div>
+            <div data-reveal="x"><dt>Torque</dt><dd>A twisting force. The engine makes it, the driveline multiplies it, the wheels put it on the road.</dd></div>
+          </dl>
+        </section>
+
+        <footer class="foot" data-reveal="y">
+          <p>Built with Three.js. Every part is generated from code, with no model files.</p>
+          <button type="button" data-goto="top">Back to start ↑</button>
+        </footer>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
